@@ -337,7 +337,7 @@
         },
         {
           "begin": "(?<!\\.)\\s*+\\b(break|continue)\\b",
-          "end": "^\\s*|\\s*(?=;|//|$|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
+          "end": "^\\s*|\\s*(?=;|//|$|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b)",
           "beginCaptures": {
             "1": { "name": "keyword.control.loop.js" }
           },
@@ -546,7 +546,7 @@
     },
     "jsdoc-simple": {
       "comment": "@tag",
-      "match": "(?:^[\\s*]*|(?<=/\\*\\*)\\s*)(@(abstract|author|classdesc|copyright|default|defaultvalue|deprecated|description|desc|example|external|fileoverview|file|global|host|ignore|inheritdoc|inner|instance|license|override|overview|readonly|see|since|static|summary|todo|tutorial|virtual|variation|version)\\b)(?=$|\\s)",
+      "match": "(?:^[\\s*]*|(?<=/\\*\\*)\\s*)(@(abstract|author|classdesc|copyright|default|defaultvalue|deprecated|description|desc|example|external|fileoverview|file|global|host|ignore|inheritdoc|inner|instance|license|override|overview|readonly|enum|see|since|static|summary|todo|tutorial|virtual|variation|version)\\b)(?=$|\\s)",
       "captures": {
         "1": { "name": "storage.type.class.jsdoc"}
       }
@@ -846,7 +846,7 @@
       "patterns": [
         {
           "begin": "(?<!\\.)\\s*+\\b(const|let|var)\\b",
-          "end": "(?=^\\s*[$_[:alpha:]][$_[:alnum:]]*:\\s*($|\\b(do|for|while)\\b))|\\s*(?=;|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?=^\\s*[$_[:alpha:]][$_[:alnum:]]*:\\s*($|\\b(do|for|while)\\b))|\\s*(?=;|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|})",
           "beginCaptures": {
             "1": { "name": "storage.type.js" }
           },
@@ -862,7 +862,7 @@
           "comment": "e.g. function play<T>(arg1, arg2) { }",
           "name": "meta.function.js",
           "begin": "\\s*+(?:\\b(async)\\b\\s+)?\\s*+(?:(?<=\\.\\.\\.)|(?<!\\.))(\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(?=\\s*+(\\(|<))",
-          "end": "(?<=})|\\s*(?=,|;|:|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?<=})|\\s*(?=,|;|:|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "storage.type.js" },
@@ -879,7 +879,7 @@
           "comment": "e.g. play = function(arg1, arg2) { }",
           "name": "meta.function.js",
           "begin": "\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(?=\\s*+(\\(|<))",
-          "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "keyword.operator.private.js" },
@@ -899,7 +899,7 @@
           "comment": "e.g. Sound.prototype.play = function(arg1, arg2) { }",
           "name": "meta.prototype.function.js",
           "begin": "\\s*+(\\#?)((?:[_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(?:(\\?\\.)|(\\.))(prototype)(?:(\\?\\.)|(\\.))(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(?=\\s*+(\\(|<))",
-          "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "keyword.operator.private.js" },
@@ -926,7 +926,7 @@
           "comment": "e.g. Sound.play = function(arg1, arg2) { }",
           "name": "meta.function.static.js",
           "begin": "\\s*+(\\#?)((?:[_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(?:(\\?\\.)|(\\.))(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(?=\\s*+(\\(|<))",
-          "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "keyword.operator.private.js" },
@@ -1390,7 +1390,7 @@
             { "include": "#round-brackets" }
           ]
         },
-        { "include": "#literal-operators" },        
+        { "include": "#literal-operators" },
         {
           "name": "meta.function-call.without-arguments.js",
           "match": "(?<!\\.)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(\\()\\s*+(\\))",
@@ -1702,7 +1702,7 @@
           ]
         },
         {
-          "match": "(?<!\\.)\\s*+\\b(static)\\b(?!\\.)",
+          "match": "(?<!\\.)\\s*+\\b(static|readonly|enum)\\b(?!\\.)",
           "captures": {
             "1": { "name": "storage.modifier.js" }
           }
@@ -2250,7 +2250,7 @@
         },
         {
           "begin": "(?<!\\.)\\s*+\\b(import)(?!\\s*:)\\b",
-          "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
+          "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|}))",
           "beginCaptures": {
             "1": { "name": "keyword.control.module.js" }
           },
@@ -2293,7 +2293,7 @@
         {
           "comment": "export {  or  export * or export var or export type {} from module",
           "begin": "(?<!\\.)\\s*+\\b(export)\\b\\s*(\\btype\\b)?(?=\\s++({|\\*|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\s++from\\b|\\s*,)))",
-          "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
+          "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|readonly|enum)\\b|\\)|}))",
           "beginCaptures": {
             "1": { "name": "keyword.control.module.js" },
             "2": { "name": "keyword.control.module.js" }
@@ -3017,7 +3017,7 @@
           },
           {
             "comment": "custom primitive/var Types e.g. abc avoid abc(",
-            "match": "(?!\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)(?!^)\\s*(?<=\\s|:|&|\\||<)([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
+            "match": "(?!\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|enum)\\b)(?!^)\\s*(?<=\\s|:|&|\\||<)([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
             "captures": {
               "2": { "name": "support.type.primitive.flowtype" }
             }
@@ -3272,6 +3272,49 @@
         }
       ]
     },
+    "flowtype-enum": {
+      "begin": "(?<!\\.)\\s*+\\b(enum)(\\s+|$)",
+      "end": "(?<=})",
+      "beginCaptures": {
+        "1": { "name": "keyword.other.enum.flowtype" }
+      },
+      "patterns": [
+        {
+          "match": "\\s*+\\b((extends))\\b\\s*+",
+          "captures": {
+            "1": { "name": "meta.class.extends.js" },
+            "2": { "name": "storage.type.extends.js" }
+          }
+        },
+        {
+          "comment": "look for interface names but dont assume uppercase start char",
+          "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
+          "name": "support.type.class.interface.js"
+        },
+        { "include": "#flowtype-polymorphs" },
+        {
+          "begin": "\\s*+({)",
+          "end": "\\s*(})",
+          "contentName": "meta.class.body.js",
+          "beginCaptures": {
+            "1": { "name": "punctuation.section.class.begin.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.section.class.end.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-literal-method" },
+            { "include": "#class-body" }
+          ]
+        },
+        {
+          "match": "\\s*(\\.)",
+          "captures": {
+            "1": {"name": "keyword.operator.accessor.js" }
+          }
+        }
+      ]
+    },
     "flowtype-interface": {
       "begin": "(?<!\\.)\\s*+\\b(interface)(\\s+|$)",
       "end": "(?<=})",
@@ -3318,7 +3361,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface|opaque|export)\\b)",
+          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface|opaque|export|enum)\\b)",
           "captures": {
             "1": { "name":  "keyword.other.declare.flowtype" }
           }
@@ -3456,7 +3499,8 @@
       "patterns": [
         { "include": "#flowtype-declare" },
         { "include": "#flowtype-type-aliases" },
-        { "include": "#flowtype-interface"}
+        { "include": "#flowtype-interface"},
+        { "include": "#flowtype-enum"}
       ]
     },
     "flowtype-comments": {
